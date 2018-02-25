@@ -12682,7 +12682,7 @@ $$</p>
 <p>We have imported some Python modules to get you started, but feel free to import as many modules as you need.  If you end up getting stuck, here's a hint that specifies a model that trains relatively fast on CPU and attains &gt;1% test accuracy in 5 epochs:</p>
 <p><img src="images/sample_cnn.png" alt="Sample CNN"></p>
 <p><strong>Question 4:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  If you chose to use the hinted architecture above, describe why you think that CNN architecture should work well for the image classification task.</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> I chose a rather simple model for this task is to avoid overfitting. The training dataset is rather small, and the problem of classifying 133 breeds is complicated. Furthermore, this model is very fast to train.</p>
 
 </div>
 </div>
@@ -13442,7 +13442,17 @@ test_{network} = bottleneck_features['test']</code></pre>
 
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> This model takes in resnet50 output and using softmax to predict the probability of each breed the input vector might be. The resnet50 output contains some high-level features that is useful for solving our problem.</p>
+<ul>
+<li>Choose 2 hidden layer makes this network more powerful to do non-linear transformation such as XOR. </li>
+<li>Softmax output layer is good for multi-class classification problem. </li>
+<li>Slowly decrese the number of neuron in each layer is to refine the information passed on to next layer.</li>
+<li>Drop out layer is to prevent overfitting. </li>
+</ul>
+<p>This model is better than the previous one is becuase:</p>
+<ul>
+<li>Pretrained model actually gives us a lot of high-level features and erase the noise in the raw picture, so simply add a top layer to combine the high-level feature would give us a much better result.</li>
+</ul>
 
 </div>
 </div>
